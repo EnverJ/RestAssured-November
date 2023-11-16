@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - New logging feature for better debug capability.
 ### Fixed
 - Resolved issue where user settings were not saved correctly.
+- added README.md file
 
 ## [1.0.0] - 2023-11-01
 ### Added
@@ -17,3 +18,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 - Removed some files
+- align with README.md
