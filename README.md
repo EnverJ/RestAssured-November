@@ -23,8 +23,6 @@ If you would like to contribute, please read [CONTRIBUTING.md](./CONTRIBUTING.md
 
 Information about the project's license.
 
-## Changelog
 
-For a detailed list of changes and updates, please refer to our [Changelog](./CHANGELOG.md).
 
 
