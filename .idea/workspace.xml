@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251470e8-850b-4946-bf71-1062e88fc2e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/getMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/DataGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/RequestParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/baseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/getMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/getMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,30 +36,69 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="TestNG.getMap">
-    <configuration name="getMap" type="TestNG" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.mapTest">
+    <configuration name="mapTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="RestAssured-November" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="getMap" />
+      <option name="MAIN_CLASS_NAME" value="mapTest" />
+      <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="CLASS" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="PROPERTIES_FILE" value="" />
       <properties />
       <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="getMap.getMaps" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="mapTest.checkGet" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="RestAssured-November" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="getMap" />
+      <option name="MAIN_CLASS_NAME" value="mapTest" />
+      <option name="METHOD_NAME" value="checkGet" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mapTest.getMaps" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="RestAssured-November" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="mapTest" />
       <option name="METHOD_NAME" value="getMaps" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mapTest.validateGet" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="RestAssured-November" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="mapTest" />
+      <option name="METHOD_NAME" value="validateGet" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -67,8 +108,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.getMap" />
-        <item itemvalue="TestNG.getMap.getMaps" />
+        <item itemvalue="TestNG.mapTest" />
+        <item itemvalue="TestNG.mapTest.checkGet" />
+        <item itemvalue="TestNG.mapTest.getMaps" />
+        <item itemvalue="TestNG.mapTest.validateGet" />
       </list>
     </recent_temporary>
   </component>
