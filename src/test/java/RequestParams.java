@@ -5,10 +5,13 @@ import io.restassured.specification.RequestSpecification;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.h2.util.json.JSONObject;
 import org.testng.Assert;
 
 @Data
 public class RequestParams {
+
+   public static final String base = "https://reqres.in/api";
     @Getter
     @Setter
     private String pageNumber, pageName;
@@ -23,7 +26,7 @@ public class RequestParams {
     }
 
     public void getMaps(String Number) {
-        RestAssured.baseURI = "https://reqres.in/api";
+        RestAssured.baseURI=base;
         RequestSpecification httpRequest = RestAssured.given();
 
         Response response = httpRequest.request(Method.GET, "/users?page=" + Number);
@@ -40,7 +43,32 @@ public class RequestParams {
         Assert.assertEquals(contentEncoding, "gzip");
     }
 
-    public void getPosts() {
+    public void getPosts(String postbody) {
+        RestAssured.baseURI=base;
+        RequestSpecification postRequest = RestAssured.given();
+        // 3.Response Object
+        JSONObject requestParams=new JSONObject();
+        //request payload sending along with post request
+        requestParams.put("name","Ezmet");
+        requestParams.put("job","IT");
+        // add header
+        httpRequest.header("Conten-Type","application/json");
+        httpRequest.body(requestParams.toJSONString());  // attach above data to the param
+        // response object
+        Response response=httpRequest.request(Method.POST,"api/users");
 
+        // print response in console window. Response body normally coming in Json format. So we need to use asString in order to print it. this step can be ignored in work
+        String responseBody=response.getBody().asString();
+        System.out.println("Response Body: "+responseBody);
+
+        // Verify status code and Status line
+        int statusCode=response.getStatusCode();
+        System.out.println("Status Code: "+statusCode);
+        Assert.assertEquals(statusCode,201);
+
+
+        // verify success conde
+        String successCode=response.jsonPath().get("SuccessCode");
+        System.out.println("Success Code: "+successCode);
     }
 }
