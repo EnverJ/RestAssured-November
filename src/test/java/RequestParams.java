@@ -5,7 +5,7 @@ import io.restassured.specification.RequestSpecification;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.h2.util.json.JSONObject;
+import org.json.JSONObject;
 import org.testng.Assert;
 
 @Data
@@ -43,19 +43,19 @@ public class RequestParams {
         Assert.assertEquals(contentEncoding, "gzip");
     }
 
-    public void getPosts(String postbody) {
+    public void getPosts(String key, String value) {
         RestAssured.baseURI=base;
         RequestSpecification postRequest = RestAssured.given();
         // 3.Response Object
-        JSONObject requestParams=new JSONObject();
+        JSONObject requestParams = new JSONObject();
         //request payload sending along with post request
-        requestParams.put("name","Ezmet");
-        requestParams.put("job","IT");
+        requestParams.put(key,value);
+        requestParams.put(key,value);
         // add header
-        httpRequest.header("Conten-Type","application/json");
-        httpRequest.body(requestParams.toJSONString());  // attach above data to the param
+        postRequest.header("Conten-Type","application/json");
+        postRequest.body(requestParams.toString());  // attach above data to the param
         // response object
-        Response response=httpRequest.request(Method.POST,"api/users");
+        Response response=postRequest.request(Method.POST,"api/users");
 
         // print response in console window. Response body normally coming in Json format. So we need to use asString in order to print it. this step can be ignored in work
         String responseBody=response.getBody().asString();

@@ -2,13 +2,14 @@ import lombok.NonNull;
 import org.testng.annotations.DataProvider;
 
 public class baseTest {
-    public static final String uuid= "xxxx";
+    public static final String uuid = "xxxx";
     public static String inputMessage;
-   public RequestParams params;
+    public RequestParams params;
 
-   public baseTest(){
-       this.params = new RequestParams();
-   }
+    public baseTest() {
+        this.params = new RequestParams();
+    }
+
     @DataProvider(name = "pagesNumber")
     public Object[][] getPagesNumber() {
         return new Object[][]{
@@ -17,5 +18,13 @@ public class baseTest {
         };
     }
 
+    @DataProvider(name = "postMethodValues")
+    public Object[][] postnewUser() {
+        return new Object[][]{
+                {"name", "ezmet"},
+                {"id", "2"}
+        };
+
+    }
 
 }
