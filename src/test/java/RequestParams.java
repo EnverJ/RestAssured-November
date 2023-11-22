@@ -5,13 +5,19 @@ import io.restassured.specification.RequestSpecification;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.codehaus.groovy.transform.SourceURIASTTransformation;
 import org.json.JSONObject;
 import org.testng.Assert;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 @Data
+@Slf4j
 public class RequestParams {
 
-   public static final String base = "https://reqres.in/api";
+    public static final String base = "https://reqres.in/api";
     @Getter
     @Setter
     private String pageNumber, pageName;
@@ -25,50 +31,70 @@ public class RequestParams {
         this.pageNumber = pageNumber;
     }
 
-    public void getMaps(String Number) {
-        RestAssured.baseURI=base;
+    public void getCalls(String Number) {
+        RestAssured.baseURI = base;
+        String filePath = "src/test/resources/getBody";
+        String WriteSuccess = "Successfully wrote JSON response to file.";
         RequestSpecification httpRequest = RestAssured.given();
 
         Response response = httpRequest.request(Method.GET, "/users?page=" + Number);
 
         String responseBody = response.getBody().asString();
-        System.out.println("Response Body: " + responseBody);
+   //     log.info("Response Body: " + responseBody);
+        System.out.println("responseBody = " + responseBody);
 
         String contentType = response.header("Content-Type");
-        System.out.println("Content-Type: " + contentType);
+   //     log.info("Content-Type: " + contentType);
+        System.out.println("contentType = " + contentType);
         Assert.assertEquals(contentType, "application/json; charset=utf-8");
 
         String contentEncoding = response.header("Content-Encoding");
-        System.out.println("Content-Encoding: " + contentEncoding);
+  //      log.info("Content-Encoding: " + contentEncoding);
+        System.out.println("contentEncoding = " + contentEncoding);
         Assert.assertEquals(contentEncoding, "gzip");
+        writeFile(responseBody,filePath,WriteSuccess);
     }
 
-    public void getPosts(String key, String value) {
-        RestAssured.baseURI=base;
-        RequestSpecification postRequest = RestAssured.given();
-        // 3.Response Object
-        JSONObject requestParams = new JSONObject();
-        //request payload sending along with post request
-        requestParams.put(key,value);
-        requestParams.put(key,value);
-        // add header
-        postRequest.header("Conten-Type","application/json");
-        postRequest.body(requestParams.toString());  // attach above data to the param
-        // response object
-        Response response=postRequest.request(Method.POST,"api/users");
+    public void PostCall(String key1, String value1, String key2, String value2) throws IOException {
+            RestAssured.baseURI = base;
+            String filePath = "src/test/resources/postBody";
+            String WriteSuccess = "Successfully wrote JSON response to file.";
+            RequestSpecification httpRequest = RestAssured.given();
 
-        // print response in console window. Response body normally coming in Json format. So we need to use asString in order to print it. this step can be ignored in work
-        String responseBody=response.getBody().asString();
-        System.out.println("Response Body: "+responseBody);
+            // Request payload
+            JSONObject requestParams = new JSONObject();
+            requestParams.put(key1, value1);
+            requestParams.put(key2, value2);
 
-        // Verify status code and Status line
-        int statusCode=response.getStatusCode();
-        System.out.println("Status Code: "+statusCode);
-        Assert.assertEquals(statusCode,201);
+            // Add header
+            httpRequest.header("Content-Type", "application/json");
+            httpRequest.body(requestParams.toString()); // Attach data to the request
 
+            // Response object
+            Response response = httpRequest.request(Method.POST, "api/users");
 
-        // verify success conde
-        String successCode=response.jsonPath().get("SuccessCode");
-        System.out.println("Success Code: "+successCode);
+            // Print response
+            String responseBody = response.getBody().asString();
+            log.info("Response Body: " + responseBody);
+
+            // Verify status code
+            int statusCode = response.getStatusCode();
+            log.info("Status Code: " + statusCode);
+            Assert.assertEquals(statusCode, 201);
+
+            // Verify success code
+            String successCode = response.jsonPath().get("SuccessCode");
+            log.info("Success Code: " + successCode);
+            writeFile(responseBody,filePath,WriteSuccess);
+
+    }
+    public void writeFile(String responseBody, String filePath, String WriteSuccess) {
+        try(FileWriter fileWriter = new FileWriter(filePath)){
+            fileWriter.write(responseBody);
+            System.out.println( WriteSuccess);
+        }catch (IOException E){
+            System.out.println("An error occur while json writing to the file");
+            E.printStackTrace();
+        }
     }
 }

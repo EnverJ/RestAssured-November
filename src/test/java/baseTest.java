@@ -21,8 +21,8 @@ public class baseTest {
     @DataProvider(name = "postMethodValues")
     public Object[][] postnewUser() {
         return new Object[][]{
-                {"name", "ezmet"},
-                {"id", "2"}
+                {"name", "ezmet","Job", "Developer"},
+
         };
 
     }

@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251470e8-850b-4946-bf71-1062e88fc2e6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/resources/getBody" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/postBody" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RequestParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RequestParams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/baseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/baseTest.java" afterDir="false" />
@@ -46,7 +48,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.mapTest.postRequest">
+  <component name="RunManager" selected="TestNG.mapTest.GetRequest">
     <configuration name="mapTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="RestAssured-November" />
       <shortenClasspath name="NONE" />
@@ -68,6 +70,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="mapTest.GetRequest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="RestAssured-November" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="mapTest" />
+      <option name="METHOD_NAME" value="GetRequest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="mapTest.checkGet" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="RestAssured-November" />
       <option name="PACKAGE_NAME" value="" />
@@ -80,12 +94,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mapTest.getMaps" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="mapTest.postRequest (1)" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="RestAssured-November" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="mapTest" />
-      <option name="METHOD_NAME" value="getMaps" />
+      <option name="METHOD_NAME" value="postRequest" />
       <option name="TEST_OBJECT" value="METHOD" />
+      <option name="PARAMETERS" value="2" />
       <properties />
       <listeners />
       <method v="2">
@@ -104,25 +119,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mapTest.validateGet" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="RestAssured-November" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="mapTest" />
-      <option name="METHOD_NAME" value="validateGet" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.mapTest.postRequest" />
+        <item itemvalue="TestNG.mapTest.GetRequest" />
         <item itemvalue="TestNG.mapTest" />
         <item itemvalue="TestNG.mapTest.checkGet" />
-        <item itemvalue="TestNG.mapTest.getMaps" />
-        <item itemvalue="TestNG.mapTest.validateGet" />
+        <item itemvalue="TestNG.mapTest.postRequest" />
+        <item itemvalue="TestNG.mapTest.postRequest (1)" />
       </list>
     </recent_temporary>
   </component>
