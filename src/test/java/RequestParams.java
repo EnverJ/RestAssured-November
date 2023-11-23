@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.codehaus.groovy.transform.SourceURIASTTransformation;
 import org.json.JSONObject;
 import org.testng.Assert;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Data
 @Slf4j
@@ -55,7 +56,7 @@ public class RequestParams {
         writeFile(responseBody,filePath,WriteSuccess);
     }
 
-    public void PostCall(String key1, String value1, String key2, String value2) throws IOException {
+    public void PostCall(String key1, String value1, String key2, String value2) {
             RestAssured.baseURI = base;
             String filePath = "src/test/resources/postBody";
             String WriteSuccess = "Successfully wrote JSON response to file.";
@@ -87,6 +88,42 @@ public class RequestParams {
             log.info("Success Code: " + successCode);
             writeFile(responseBody,filePath,WriteSuccess);
 
+    }
+    public void readJsonBodyPost(String SourceFilepath) {
+        RestAssured.baseURI = base;
+        String filePath = "src/test/resources/postBody";
+        String WriteSuccess = "Successfully wrote JSON response to file.";
+        String jsonBody = null;
+        try {
+            jsonBody = readJsonBody(SourceFilepath);
+        } catch (IOException e) {
+            System.out.println("source file dose not exist");
+        }
+        RequestSpecification httpRequest = RestAssured.given();
+
+        httpRequest.header("Content-Type", "application/json");
+        httpRequest.body(jsonBody);
+        Response response = httpRequest.request(Method.POST, "api/users");
+
+        String responseBody = response.getBody().asString();
+        log.info("Response Body: " + responseBody);
+        System.out.println("responseBody = " + responseBody);
+
+        int statusCode = response.getStatusCode();
+        log.info("Status Code: " + statusCode);
+        Assert.assertEquals(statusCode, 201);
+
+        // Verify success code
+        String successCode = response.jsonPath().get("SuccessCode");
+        log.info("Success Code: " + successCode);
+        writeFile(responseBody,filePath,WriteSuccess);
+
+
+
+    }
+
+    public String readJsonBody(String filePath) throws IOException {
+         return new String(Files.readAllBytes(Paths.get(filePath)));
     }
     public void writeFile(String responseBody, String filePath, String WriteSuccess) {
         try(FileWriter fileWriter = new FileWriter(filePath)){

@@ -26,5 +26,25 @@ public class baseTest {
         };
 
     }
+    @DataProvider(name = "postCallMap")
+    public Object[][] postnewUserMap() {
+        return new Object[][]{
+                {"name", "ezmet"},
+                {"Job", "Developer"},
+
+        };
+
+    }
+
+    // src/test/resources/input/employeeData
+
+    @DataProvider(name = "postCallInputFilePath")
+    public Object[][] postnewUserMapInput() {
+        return new Object[][]{
+                {"src/test/resources/input/employeeData"}
+
+        };
+
+    }
 
 }

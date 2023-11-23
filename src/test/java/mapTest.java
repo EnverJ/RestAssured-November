@@ -1,6 +1,7 @@
 import org.testng.annotations.Test;
 
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class mapTest extends baseTest {
     @Test(enabled = true, dataProvider = "pagesNumber")
@@ -10,7 +11,12 @@ public class mapTest extends baseTest {
 
 
     @Test(enabled = true, dataProvider = "postMethodValues")
-    public void postRequest(String key, String value,String key2, String value2) throws IOException {
+    public void postRequest(String key, String value,String key2, String value2){
         params.PostCall(key, value, key2, value2);
     }
+    @Test(enabled = true, dataProvider = "postCallInputFilePath")
+     public  void postInputFile(String filepath) {
+        params.readJsonBodyPost(filepath);
+     }
+
 }
