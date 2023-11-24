@@ -17,6 +17,12 @@ public class baseTest {
                 {"2"}
         };
     }
+    @DataProvider(name = "userId")
+        public Object[][] userId() {
+            return new Object[][]{
+                    {"1"}
+            };
+    }
 
     @DataProvider(name = "postMethodValues")
     public Object[][] postnewUser() {

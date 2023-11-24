@@ -1,4 +1,6 @@
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -87,6 +89,50 @@ public class RequestParams {
             String successCode = response.jsonPath().get("SuccessCode");
             log.info("Success Code: " + successCode);
             writeFile(responseBody,filePath,WriteSuccess);
+
+    }
+
+    public void getUserInfo(String number) {
+        RestAssured.baseURI = base;
+        String filePath = "src/test/resources/getUserInfo";
+        String WriteSuccess = "Successfully wrote JSON response to file.";
+
+        RequestSpecification httpRequest = RestAssured.given();
+        Response response = httpRequest.request(Method.GET,"/users?page=" + number);
+
+        String responseBody = response.getBody().asString();
+        System.out.println("responseBody = " + responseBody);
+
+        int statusCode = response.statusCode();
+        System.out.println("statusCode = " + statusCode);
+        Assert.assertEquals(statusCode,200);
+
+        String statusLine = response.statusLine();
+        System.out.println("statusLine = " + statusLine);
+        Assert.assertEquals(statusLine,"HTTP/1.1 200 OK");
+
+        writeFile(responseBody,filePath,WriteSuccess);
+
+
+    }
+    public  void getWeatherDetails() {
+        RestAssured.baseURI = "https://maps.googleapis.com";
+        String filePath = "src/test/resources/weatherDetails";
+        String WriteSuccess = "Successfully wrote JSON response to file.";
+
+        RequestSpecification httpRequest = RestAssured.given();
+
+        Response response = httpRequest.request(Method.GET, "/maps/api/place/nearbysearch/xml?location=-33.8670522,151.1957362&radius=1500&type=supermarket&key=AIzaSyBjGCE3VpLU4lgTqSTDmHmJ2HoELb4Jy1s\\n");
+
+        String responseBody = response.getBody().asString();
+        System.out.println("responseBody = " + responseBody);
+
+        Headers  allHeaders = response.getHeaders();
+        for (Header header:allHeaders) {
+            System.out.println("header = " + header.getValue());
+        }
+        writeFile(responseBody,filePath,WriteSuccess);
+
 
     }
     public void readJsonBodyPost(String SourceFilepath) {
