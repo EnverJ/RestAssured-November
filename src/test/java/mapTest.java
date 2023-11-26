@@ -21,7 +21,10 @@ public class mapTest extends baseTest {
     public void postRequest(String key, String value,String key2, String value2){
         params.PostCall(key, value, key2, value2);
     }
-
+    @Test(enabled = true, dataProvider = "validateUsers")
+    public  void validateUser(String page) {
+        params.validateAllJsonValue(page);
+    }
     @Test(enabled = true, dataProvider = "postCallInputFilePath")
      public  void postInputFile(String filepath) {
         params.readJsonBodyPost(filepath);

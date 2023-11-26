@@ -2,6 +2,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.Data;
@@ -20,7 +21,7 @@ import java.nio.file.Paths;
 @Slf4j
 public class RequestParams {
 
-    public static final String base = "https://reqres.in/api";
+    public static final String base = "https://reqres.in";
     @Getter
     @Setter
     private String pageNumber, pageName;
@@ -139,17 +140,16 @@ public class RequestParams {
         RestAssured.baseURI = base;
         String filePath = "src/test/resources/postBody";
         String WriteSuccess = "Successfully wrote JSON response to file.";
+        RequestSpecification httpRequest = RestAssured.given();
+        httpRequest.header("Content-Type", "application/json");
         String jsonBody = null;
         try {
             jsonBody = readJsonBody(SourceFilepath);
         } catch (IOException e) {
             System.out.println("source file dose not exist");
         }
-        RequestSpecification httpRequest = RestAssured.given();
-
-        httpRequest.header("Content-Type", "application/json");
         httpRequest.body(jsonBody);
-        Response response = httpRequest.request(Method.POST, "api/users");
+        Response response = httpRequest.request(Method.POST, "/api/users");
 
         String responseBody = response.getBody().asString();
         log.info("Response Body: " + responseBody);
@@ -163,6 +163,28 @@ public class RequestParams {
         String successCode = response.jsonPath().get("SuccessCode");
         log.info("Success Code: " + successCode);
         writeFile(responseBody,filePath,WriteSuccess);
+    }
+
+    public void validateAllJsonValue(String page) {
+        RestAssured.baseURI = base;
+        String filePath = "src/test/resources/postBody";
+        String WriteSuccess = "Successfully wrote JSON response to file.";
+        RequestSpecification httpRequest = RestAssured.given();
+
+        Response response = httpRequest.request(Method.GET,"/api/users/" + page);
+
+        JsonPath jsonPath = response.jsonPath();
+        String id = jsonPath.get("id");
+        String email = jsonPath.get("email");
+        String first_name = jsonPath.get("first_name");
+        String last_name = jsonPath.get("last_name");
+        String avatar = jsonPath.get("avatar");
+        System.out.println("id = " + id);
+        System.out.println("email = " + email);
+        System.out.println("first_name = " + first_name);
+        System.out.println("last_name = " + last_name);
+        System.out.println("avatar = " + avatar);
+        Assert.assertEquals(id,"2");
 
 
 

@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="251470e8-850b-4946-bf71-1062e88fc2e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/getUserInfo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/weatherDetails" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/RequestParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RequestParams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/baseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/baseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/mapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/mapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/input/employeeData" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/input/employeeData" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/postBody" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/postBody" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +48,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.mapTest.getWeatherInfo">
+  <component name="RunManager" selected="TestNG.mapTest.validateUser">
     <configuration name="mapTest.getUserInfo" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="RestAssured-November" />
       <option name="PACKAGE_NAME" value="" />
@@ -98,11 +97,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mapTest.pstRequestMap" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="mapTest.validateUser" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="RestAssured-November" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="mapTest" />
-      <option name="METHOD_NAME" value="pstRequestMap" />
+      <option name="METHOD_NAME" value="validateUser" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -112,11 +111,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.mapTest.validateUser" />
         <item itemvalue="TestNG.mapTest.getWeatherInfo" />
-        <item itemvalue="TestNG.mapTest.getUserInfo" />
-        <item itemvalue="TestNG.mapTest.postRequest" />
         <item itemvalue="TestNG.mapTest.postInputFile" />
-        <item itemvalue="TestNG.mapTest.pstRequestMap" />
+        <item itemvalue="TestNG.mapTest.postRequest" />
+        <item itemvalue="TestNG.mapTest.getUserInfo" />
       </list>
     </recent_temporary>
   </component>

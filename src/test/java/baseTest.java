@@ -41,7 +41,16 @@ public class baseTest {
         };
 
     }
+    //validateUsers
+    @DataProvider(name = "validateUsers")
+    public Object[][] getValidateUsers() {
+        return new Object[][]{
+                {"2"}
 
+
+        };
+
+    }
     // src/test/resources/input/employeeData
 
     @DataProvider(name = "postCallInputFilePath")
